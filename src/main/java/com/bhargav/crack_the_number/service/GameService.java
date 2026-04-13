@@ -1,5 +1,6 @@
 package com.bhargav.crack_the_number.service;
 import com.bhargav.crack_the_number.model.GameSession;
+import com.bhargav.crack_the_number.dto.StatsResponse;
 import java.util.*;
 
 
@@ -67,5 +68,39 @@ public class GameService {
         activeDifficulty.remove(user.getId());
 
         return "CORRECT! You got it in " + guessCount + "guesses!";
+    }
+
+    public  StatsResponse getStats(User user){
+        List<GameSession> sessions = gameSessionRepository.findByUser(user);
+
+        int totalGames = sessions.size();
+        int totalWins = 0;
+        int bestScore = Integer.MAX_VALUE;
+
+        for(GameSession session : sessions){
+            if(session.getWon()){
+                totalWins++;
+                if (session.getGuessesTaken() < bestScore){
+                    bestScore = session.getGuessesTaken();
+                }
+            }
+        }
+        int totalLosses = totalGames - totalWins;
+
+        double winRate = 0;
+        if (totalGames > 0){
+            winRate = (totalWins * 100.0) / totalGames;
+        }
+        if(bestScore == Integer.MAX_VALUE){
+            bestScore = 0;
+        }
+        StatsResponse stats = new StatsResponse();
+        stats.setTotalGames(totalGames);
+        stats.setTotalWins(totalWins);
+        stats.setTotalLosses(totalLosses);
+        stats.setWinRate(winRate);
+        stats.setBestScore(bestScore);
+
+        return stats;
     }
 }
