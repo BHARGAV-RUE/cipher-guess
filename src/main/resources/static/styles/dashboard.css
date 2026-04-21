@@ -1,0 +1,253 @@
+/* ── Navbar ── */
+.nav-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 60px;
+    background-color: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-username {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+/* ── Dashboard Main ── */
+.dashboard-main {
+    position: relative;
+    z-index: 1;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 120px 60px 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+/* ── Welcome ── */
+.welcome-section {
+    animation: fadeUp 0.5s ease 0.1s both;
+}
+
+.welcome-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+}
+
+.welcome-name {
+    font-family: var(--font-display);
+    font-size: 72px;
+    color: var(--primary);
+    line-height: 1;
+    text-shadow: 0 0 40px rgba(255, 215, 0, 0.3);
+    letter-spacing: 4px;
+}
+
+.welcome-sub {
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: var(--text-muted);
+    margin-top: 8px;
+}
+
+/* ── Stats Grid ── */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    animation: fadeUp 0.5s ease 0.25s both;
+}
+
+.stat-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 24px 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.stat-card:hover {
+    border-color: var(--primary);
+    transform: translateY(-3px);
+}
+
+.stat-card--gold {
+    border-color: var(--primary);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.stat-card--wide {
+    grid-column: span 4;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    text-align: left;
+    padding: 20px 28px;
+}
+
+.stat-card--wide .stat-value {
+    font-size: 36px;
+}
+
+.stat-icon {
+    font-size: 20px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.stat-card--wide .stat-icon {
+    margin-bottom: 0;
+}
+
+.stat-value {
+    font-family: var(--font-display);
+    font-size: 48px;
+    color: var(--primary);
+    line-height: 1;
+    letter-spacing: 2px;
+}
+
+.stat-label {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-top: 6px;
+    text-transform: uppercase;
+}
+
+.win-rate-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--border);
+    margin-left: auto;
+    width: 200px;
+}
+
+.win-rate-fill {
+    height: 100%;
+    background: var(--primary);
+    width: 0%;
+    transition: width 1s ease;
+}
+
+/* ── Game Select ── */
+.game-select-section {
+    animation: fadeUp 0.5s ease 0.4s both;
+}
+
+.section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+}
+
+.difficulty-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.diff-btn {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 24px 16px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.diff-btn:hover {
+    border-color: var(--primary);
+    background: rgba(255, 215, 0, 0.05);
+}
+
+.diff-btn.selected {
+    border-color: var(--primary);
+    background: rgba(255, 215, 0, 0.1);
+    box-shadow: var(--glow);
+}
+
+.diff-btn--god {
+    border-color: #ff4444;
+}
+
+.diff-btn--god:hover, .diff-btn--god.selected {
+    border-color: #ff4444;
+    background: rgba(255, 68, 68, 0.08);
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.2);
+}
+
+.diff-range {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.diff-name {
+    font-family: var(--font-display);
+    font-size: 26px;
+    color: var(--primary);
+    letter-spacing: 3px;
+}
+
+.diff-btn--god .diff-name {
+    color: #ff4444;
+}
+
+.diff-desc {
+    font-family: var(--font-body);
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+.play-btn {
+    width: 100%;
+    padding: 18px;
+    font-size: 22px;
+    letter-spacing: 6px;
+    clip-path: none;
+    opacity: 0.4;
+    transition: all 0.2s ease;
+    pointer-events: none;
+}
+
+.play-btn.ready {
+    opacity: 1;
+    pointer-events: all;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+}

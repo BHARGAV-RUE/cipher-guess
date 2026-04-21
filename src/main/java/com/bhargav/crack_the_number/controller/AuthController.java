@@ -1,4 +1,5 @@
 package com.bhargav.crack_the_number.controller;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.PostMapping;
 import com.bhargav.crack_the_number.dto.LoginRequest;
 import com.bhargav.crack_the_number.dto.RegisterRequest;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
+    // Handles registeration, login and logout
     @Autowired
     private AuthService authService;
 
@@ -22,7 +24,10 @@ public class AuthController {
     }
 
     @PostMapping("/logout")
-    public String logout(@RequestParam String token){
+    public String logout(HttpServletRequest  request)
+    {
+        String  authHeader = request.getHeader("Authorization");
+        String token = authHeader.substring(7);
         return authService.logout(token);
     }
 

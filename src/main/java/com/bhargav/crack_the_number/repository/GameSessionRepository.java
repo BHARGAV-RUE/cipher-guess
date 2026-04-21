@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
+// Fetches all the game sessions for given user
 public interface GameSessionRepository extends JpaRepository<GameSession,Integer> {
     List<GameSession> findByUser(User user);
 }

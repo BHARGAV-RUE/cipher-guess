@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 
 @Service
 public class AuthService {
+    // Handles register, login and logout sessions so, only valid user can login and unique user
+    // can register
     @Autowired
     private UserRepository userRepository;
 
@@ -54,7 +56,6 @@ public class AuthService {
         token.setUser(user);
         token.setExpiresAt(LocalDateTime.now().plusHours(24));
         authTokenRepository.save(token);
-
         return token.getToken();
     }
 

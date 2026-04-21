@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 @Component
+// This verifies the token generated during login or registeration to let the user enter or not
 public class AuthFilter extends OncePerRequestFilter {
     @Autowired
     private AuthTokenRepository authTokenRepository;
@@ -27,21 +28,31 @@ public class AuthFilter extends OncePerRequestFilter {
             return;
         }
         String token = request.getHeader("Authorization");
-        if(token == null){
+        if(token != null && token.startsWith("Bearer ")){
+            token = token.substring(7);
+        }
+        else {
             token = request.getParameter("token");
+        }
+        if(token == null){
+            response.setStatus(401);
+            response.getWriter().write("Missing token");
             return;
         }
 
         AuthToken authToken = authTokenRepository.findByToken(token);
         if(authToken == null){
             response.setStatus(401);
+            response.getWriter().write("Invalid Token");
             return;
         }
         if(authToken.getExpiresAt().isBefore(LocalDateTime.now())){
             response.setStatus(401);
+            response.getWriter().write("Token expired");
             return;
         }
 
+        request.setAttribute("user", authToken.getUser());
         filterChain.doFilter(request, response);
     }
 }

@@ -1,6 +1,7 @@
 package com.bhargav.crack_the_number.dto;
 
 public class RegisterRequest {
+    //Taking username
     private String username;
     public String getUsername(){
         return username;
@@ -9,6 +10,7 @@ public class RegisterRequest {
         this.username = username;
     }
 
+    //Taking password
     private String password;
     public String getPassword(){
         return password;
@@ -17,6 +19,7 @@ public class RegisterRequest {
         this.password = password;
     }
 
+    //Taking email
     private String email;
 
     public String getEmail(){

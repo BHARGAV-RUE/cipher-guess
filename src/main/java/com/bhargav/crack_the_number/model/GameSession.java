@@ -67,7 +67,6 @@ public class GameSession {
     }
 
     //used to define the levels in game
-
     @Enumerated(EnumType.STRING)
     @Column(name = "difficulty", nullable = false)
     private Difficulty difficulty;
