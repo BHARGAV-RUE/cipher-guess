@@ -5,44 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afca3c69-5eaa-4c62-979c-9d5b9efc8309" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/CrackTheNumberApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/config/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/controller/AuthController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/controller/GameController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/dto/LoginRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/dto/RegisterRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/dto/StatsResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/filter/AuthFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/model/AuthToken.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/model/Difficulty.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/model/GameSession.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/model/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/repository/AuthTokenRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/repository/GameSessionRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/repository/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/service/AuthService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/bhargav/crack_the_number/service/GameService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/pages/dashboard.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/pages/game.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/pages/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scripts/authService.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scripts/dashboard.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scripts/game.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scripts/gameService.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/scripts/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/components.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/dashboard.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/game.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/global.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/styles/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/bhargav/crack_the_number/CrackTheNumberApplicationTests.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cipher-guess-frontend/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/cipher-guess-frontend/src/main.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,6 +92,15 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2" />
     </configuration>
     <configuration name="CrackTheNumberApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="crack-the-number" />
