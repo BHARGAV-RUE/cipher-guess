@@ -4,9 +4,9 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-      proxy: {
-        '/auth': 'https://your-railway-url.up.railway.app',
-        '/game': 'https://your-railway-url.up.railway.app'
-      }
+    proxy: {
+      '/auth': 'https://cipher-guess-production-c391.up.railway.app',
+      '/game': 'https://cipher-guess-production-c391.up.railway.app'
+    }
   }
 })
