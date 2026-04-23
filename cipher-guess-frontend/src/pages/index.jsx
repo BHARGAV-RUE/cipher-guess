@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import authService from '../services/authService'
-import './Index.css'
+import './index.css'
 
 export default function Index() {
   const navigate = useNavigate()

@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Index from './pages/index.jsx'
-import Dashboard from './pages/Dashboard.jsx'
-import Game from './pages/Game.jsx'
+import Dashboard from './pages/dashboard.jsx'
+import Game from './pages/game.jsx'
 
 function PrivateRoute({ children }) {
   const token = localStorage.getItem('token')

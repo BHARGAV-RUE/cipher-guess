@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import authService from '../services/authService'
 import gameService from '../services/gameService'
-import './Dashboard.css'
+import './dashboard.css'
 
 const DIFFICULTIES = [
   { key: 'EASY',   range: '1 — 10',   desc: 'Warm up',        god: false },

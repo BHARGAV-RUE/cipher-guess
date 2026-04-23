@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import authService from '../services/authService'
 import gameService from '../services/gameService'
-import './Game.css'
+import './game.css'
 
 const RANGES = { EASY: '1 — 10', MEDIUM: '1 — 50', HARD: '1 — 100', GOD: '1 — 1000' }
 
