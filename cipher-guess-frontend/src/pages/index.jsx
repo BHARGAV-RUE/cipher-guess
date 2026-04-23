@@ -5,15 +5,16 @@ import './index.css'
 
 export default function Index() {
   const navigate = useNavigate()
-  const [modal, setModal]             = useState(null) // 'login' | 'signup' | null
+  const [modal, setModal]             = useState(null)
   const [loginData, setLoginData]     = useState({ username: '', password: '' })
   const [signupData, setSignupData]   = useState({ email: '', username: '', password: '' })
   const [loginError, setLoginError]   = useState('')
   const [signupError, setSignupError] = useState('')
   const [signupSuccess, setSignupSuccess] = useState('')
   const [strength, setStrength]       = useState({ score: 0, label: '', color: '' })
+  const [showLoginPass, setShowLoginPass]   = useState(false)   // 👁️ new
+  const [showSignupPass, setShowSignupPass] = useState(false)   // 👁️ new
 
-  // ── Password strength ──
   function checkStrength(password) {
     let score = 0
     if (password.length >= 8)             score++
@@ -30,7 +31,6 @@ export default function Index() {
     setStrength({ score, ...levels[score] })
   }
 
-  // ── Login ──
   async function handleLogin(e) {
     e.preventDefault()
     setLoginError('')
@@ -45,7 +45,6 @@ export default function Index() {
     }
   }
 
-  // ── Register ──
   async function handleRegister(e) {
     e.preventDefault()
     setSignupError('')
@@ -70,13 +69,14 @@ export default function Index() {
     setLoginError('')
     setSignupError('')
     setSignupSuccess('')
+    setShowLoginPass(false)
+    setShowSignupPass(false)
     setStrength({ score: 0, label: '', color: 'transparent', width: '0%' })
   }
 
   return (
     <div className="index-page">
 
-      {/* ── Navbar ── */}
       <nav className="nav-bar">
         <span className="text-heading">CiPhErGuEsS</span>
         <div className="nav-buttons">
@@ -85,7 +85,6 @@ export default function Index() {
         </div>
       </nav>
 
-      {/* ── Content ── */}
       <main className="content">
         <div className="box-1">
           <h2 className="abt-game">About Game</h2>
@@ -108,7 +107,6 @@ export default function Index() {
         </div>
       </main>
 
-      {/* ── Footer ── */}
       <footer className="footer">
         <div className="footer-left">
           <h4>More Games & Requests</h4>
@@ -128,7 +126,6 @@ export default function Index() {
         </div>
       </footer>
 
-      {/* ── Modals ── */}
       {modal && (
         <div className="modal-overlay active" onClick={(e) => e.target === e.currentTarget && closeModal()}>
           <div className="modal-box">
@@ -147,9 +144,21 @@ export default function Index() {
                   </div>
                   <div className="form-group">
                     <label className="form-label">Password</label>
-                    <input className="form-input" type="password" placeholder="••••••••"
-                      value={loginData.password}
-                      onChange={e => setLoginData({ ...loginData, password: e.target.value })} />
+                    <div style={{ position: 'relative' }}>
+                      <input className="form-input"
+                        type={showLoginPass ? 'text' : 'password'}
+                        placeholder="••••••••"
+                        value={loginData.password}
+                        onChange={e => setLoginData({ ...loginData, password: e.target.value })}
+                        style={{ paddingRight: '2.5rem' }} />
+                      <span onClick={() => setShowLoginPass(!showLoginPass)} style={{
+                        position: 'absolute', right: '0.75rem', top: '50%',
+                        transform: 'translateY(-50%)', cursor: 'pointer',
+                        fontSize: '1.1rem', userSelect: 'none'
+                      }}>
+                        {showLoginPass ? '🙈' : '👁️'}
+                      </span>
+                    </div>
                   </div>
                   {loginError && <p className="form-error">{loginError}</p>}
                   <button className="btn-primary modal-submit" type="submit">LOGIN</button>
@@ -180,12 +189,24 @@ export default function Index() {
                   </div>
                   <div className="form-group">
                     <label className="form-label">Password</label>
-                    <input className="form-input" type="password" placeholder="••••••••"
-                      value={signupData.password}
-                      onChange={e => {
-                        setSignupData({ ...signupData, password: e.target.value })
-                        checkStrength(e.target.value)
-                      }} />
+                    <div style={{ position: 'relative' }}>
+                      <input className="form-input"
+                        type={showSignupPass ? 'text' : 'password'}
+                        placeholder="••••••••"
+                        value={signupData.password}
+                        onChange={e => {
+                          setSignupData({ ...signupData, password: e.target.value })
+                          checkStrength(e.target.value)
+                        }}
+                        style={{ paddingRight: '2.5rem' }} />
+                      <span onClick={() => setShowSignupPass(!showSignupPass)} style={{
+                        position: 'absolute', right: '0.75rem', top: '50%',
+                        transform: 'translateY(-50%)', cursor: 'pointer',
+                        fontSize: '1.1rem', userSelect: 'none'
+                      }}>
+                        {showSignupPass ? '🙈' : '👁️'}
+                      </span>
+                    </div>
                     {signupData.password && (
                       <div className="strength-bar-container">
                         <div className="strength-bar-track">

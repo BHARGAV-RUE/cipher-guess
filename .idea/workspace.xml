@@ -6,7 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="afca3c69-5eaa-4c62-979c-9d5b9efc8309" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cipher-guess-frontend/src/main.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/cipher-guess-frontend/src/main.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cipher-guess-frontend/src/pages/index.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/cipher-guess-frontend/src/pages/index.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
