@@ -5,10 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afca3c69-5eaa-4c62-979c-9d5b9efc8309" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/cipher-guess-backend/.dockerignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cipher-guess-backend/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cipher-guess-backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/cipher-guess-backend/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cipher-guess-backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/cipher-guess-backend/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cipher-guess-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cipher-guess-backend/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,6 +158,10 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="docker-deploy" factoryName="dockerfile" temporary="true">
+      <deployment type="dockerfile" />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Application.CrackTheNumberApplication" />
