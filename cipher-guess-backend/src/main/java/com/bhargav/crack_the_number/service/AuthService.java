@@ -46,7 +46,7 @@ public class AuthService {
 
 
         try {
-            emailService.sendWelcomeEmail(request.getEmail(), request.getUsername());
+            emailService.sendWelcomeEmail(user.getEmail(), user.getUsername());
         } catch (Exception e) {
             System.out.println("Email failed but registration succeeded: " + e.getMessage());
         }

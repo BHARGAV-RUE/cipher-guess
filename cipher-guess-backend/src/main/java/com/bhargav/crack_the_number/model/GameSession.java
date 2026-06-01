@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 @Table(name = "game_session")
 public class GameSession {
     @Id
-    //session Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
@@ -77,5 +76,28 @@ public class GameSession {
 
     public void setDifficulty(Difficulty difficulty) {
         this.difficulty = difficulty;
+    }
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private SessionStatus status = SessionStatus.ACTIVE;
+
+    public SessionStatus getStatus() {
+        return status;
+    }
+
+    public void setStatus(SessionStatus status) {
+        this.status = status;
+    }
+
+    @Column(name = "target")
+    private Integer target;
+
+    public Integer getTarget() {
+        return target;
+    }
+
+    public void setTarget(Integer target) {
+        this.target = target;
     }
 }

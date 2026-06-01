@@ -2,10 +2,14 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Index from './pages/index.jsx'
 import Dashboard from './pages/dashboard.jsx'
 import Game from './pages/game.jsx'
+import authService from './services/authService'
 
 function PrivateRoute({ children }) {
-  const token = localStorage.getItem('token')
-  return token ? children : <Navigate to="/" replace />
+  // FIX: was only checking localStorage('token'), which meant OAuth2 users
+  // (who have no token in localStorage — only username + an HttpOnly cookie)
+  // were always redirected back to '/'.
+  // Now uses authService.isLoggedIn() which checks for either token OR username.
+  return authService.isLoggedIn() ? children : <Navigate to="/" replace />
 }
 
 export default function App() {

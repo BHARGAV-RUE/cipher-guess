@@ -1,99 +1,129 @@
 package com.bhargav.crack_the_number.service;
-import com.bhargav.crack_the_number.model.GameSession;
+
 import com.bhargav.crack_the_number.dto.StatsResponse;
-import java.util.*;
-
-
-import com.bhargav.crack_the_number.model.Difficulty;
-import com.bhargav.crack_the_number.model.User;
+import com.bhargav.crack_the_number.model.*;
 import com.bhargav.crack_the_number.repository.GameSessionRepository;
 import com.bhargav.crack_the_number.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.Random;
+
 @Service
 public class GameService {
+
     @Autowired
     private GameSessionRepository gameSessionRepository;
 
     @Autowired
     private UserRepository userRepository;
 
-    private Map<Integer, Integer> activeTargets = new HashMap<>();
-    private Map<Integer, Integer> activeGuessesCount = new HashMap<>();
-    private Map<Integer,Difficulty> activeDifficulty = new HashMap<>();
-
-    public String startGame(User user, Difficulty difficulty){
-        int max;
-        switch(difficulty) {
-            case EASY -> max = 10;
-            case MEDIUM -> max = 50;
-            case HARD -> max = 100;
-            case GOD -> max = 1000;
-            default ->  max = 10;
+    public String startGame(User user, Difficulty difficulty) {
+        // If user already has an active game, forfeit it automatically
+        Optional<GameSession> existing =
+                gameSessionRepository.findByUserAndStatus(user, SessionStatus.ACTIVE);
+        if (existing.isPresent()) {
+            GameSession old = existing.get();
+            old.setStatus(SessionStatus.FORFEITED);
+            old.setWon(false);
+            gameSessionRepository.save(old);
         }
-        Random rand = new Random();
-        int target = rand.nextInt(max) + 1;
 
-        activeTargets.put(user.getId(), target);
-        activeGuessesCount.put(user.getId(), 0);
-        activeDifficulty.put(user.getId(), difficulty);
+        int max = switch (difficulty) {
+            case EASY   -> 10;
+            case MEDIUM -> 50;
+            case HARD   -> 100;
+            case GOD    -> 1000;
+        };
+
+        int target = new Random().nextInt(max) + 1;
+
+        GameSession session = new GameSession();
+        session.setUser(user);
+        session.setDifficulty(difficulty);
+        session.setTarget(target);
+        session.setGuessesTaken(0);
+        session.setWon(false);
+        session.setStatus(SessionStatus.ACTIVE);
+        gameSessionRepository.save(session);
 
         return "Game started! Guess a number between 1 and " + max;
     }
 
-    public String checkGuess(User user, int guess){
-        int target = activeTargets.get(user.getId());
-        int guessCount = activeGuessesCount.get(user.getId());
-        guessCount++;
-        activeGuessesCount.put(user.getId(), guessCount);
+    public String checkGuess(User user, int guess) {
+        // FIX: no more NullPointerException — fetch from DB
+        Optional<GameSession> opt =
+                gameSessionRepository.findByUserAndStatus(user, SessionStatus.ACTIVE);
 
-        if(guess > target){
+        if (opt.isEmpty()) {
+            return "No active game. Please start a game first.";
+        }
 
+        GameSession session = opt.get();
+        int target     = session.getTarget();
+        int guessCount = session.getGuessesTaken() + 1;
+        session.setGuessesTaken(guessCount);
+
+        if (guess > target) {
+            gameSessionRepository.save(session);
             return "TOO HIGH";
         }
-        if(guess < target){
+        if (guess < target) {
+            gameSessionRepository.save(session);
             return "TOO LOW";
         }
 
-        GameSession session = new GameSession();
-        session.setUser(user);
+        // Correct guess
         session.setWon(true);
-        session.setGuessesTaken(guessCount);
-        session.setDifficulty(activeDifficulty.get(user.getId()));
+        session.setStatus(SessionStatus.WON);
         gameSessionRepository.save(session);
 
-        activeTargets.remove(user.getId());
-        activeGuessesCount.remove(user.getId());
-        activeDifficulty.remove(user.getId());
-
-        return "CORRECT! You got it in " + guessCount + "guesses!";
+        return "CORRECT! You got it in " + guessCount + " guesses!";
     }
 
-    public  StatsResponse getStats(User user){
+    public String forfeit(User user) {
+        Optional<GameSession> opt =
+                gameSessionRepository.findByUserAndStatus(user, SessionStatus.ACTIVE);
+
+        if (opt.isEmpty()) {
+            return "No active game to forfeit.";
+        }
+
+        GameSession session = opt.get();
+        int target = session.getTarget();
+
+        session.setStatus(SessionStatus.FORFEITED);
+        session.setWon(false);
+        gameSessionRepository.save(session);
+
+        user.setTotalGamesPlayed(user.getTotalGamesPlayed() + 1);
+        userRepository.save(user);
+
+        return "You forfeited. The number was " + target;
+    }
+
+    public StatsResponse getStats(User user) {
         List<GameSession> sessions = gameSessionRepository.findByUser(user);
 
         int totalGames = sessions.size();
-        int totalWins = 0;
-        int bestScore = Integer.MAX_VALUE;
+        int totalWins  = 0;
+        int bestScore  = Integer.MAX_VALUE;
 
-        for(GameSession session : sessions){
-            if(session.getWon()){
+        for (GameSession session : sessions) {
+            if (session.getWon()) {
                 totalWins++;
-                if (session.getGuessesTaken() < bestScore){
+                if (session.getGuessesTaken() < bestScore) {
                     bestScore = session.getGuessesTaken();
                 }
             }
         }
-        int totalLosses = totalGames - totalWins;
 
-        double winRate = 0;
-        if (totalGames > 0){
-            winRate = (totalWins * 100.0) / totalGames;
-        }
-        if(bestScore == Integer.MAX_VALUE){
-            bestScore = 0;
-        }
+        int totalLosses = totalGames - totalWins;
+        double winRate  = totalGames > 0 ? (totalWins * 100.0) / totalGames : 0;
+        if (bestScore == Integer.MAX_VALUE) bestScore = 0;
+
         StatsResponse stats = new StatsResponse();
         stats.setTotalGames(totalGames);
         stats.setTotalWins(totalWins);
@@ -102,35 +132,5 @@ public class GameService {
         stats.setBestScore(bestScore);
 
         return stats;
-    }
-
-    public String forfeit(User user) {
-        int userId = user.getId();
-
-        if (!activeTargets.containsKey(userId)) {
-            return "No active game to forfeit.";
-        }
-
-        int target     = activeTargets.get(userId);
-        int guessCount = activeGuessesCount.get(userId);
-
-        // Save session as a loss
-        GameSession session = new GameSession();
-        session.setUser(user);
-        session.setWon(false);
-        session.setGuessesTaken(guessCount);
-        session.setDifficulty(activeDifficulty.get(userId));
-        gameSessionRepository.save(session);
-
-        // Update total games played
-        user.setTotalGamesPlayed(user.getTotalGamesPlayed() + 1);
-        userRepository.save(user);
-
-        // Clean up active game
-        activeTargets.remove(userId);
-        activeGuessesCount.remove(userId);
-        activeDifficulty.remove(userId);
-
-        return "You forfeited. The number was " + target;
     }
 }

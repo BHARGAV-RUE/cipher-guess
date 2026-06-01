@@ -5,19 +5,22 @@ import gameService from '../services/gameService'
 import './dashboard.css'
 
 const DIFFICULTIES = [
-  { key: 'EASY',   range: '1 — 10',   desc: 'Warm up',        god: false },
-  { key: 'MEDIUM', range: '1 — 50',   desc: 'Getting hot',    god: false },
-  { key: 'HARD',   range: '1 — 100',  desc: 'Real challenge', god: false },
-  { key: 'GOD',    range: '1 — 1000', desc: 'Are you serious?', god: true },
+  { key: 'EASY',   range: '1 — 10',   desc: 'Warm up',          god: false },
+  { key: 'MEDIUM', range: '1 — 50',   desc: 'Getting hot',      god: false },
+  { key: 'HARD',   range: '1 — 100',  desc: 'Real challenge',   god: false },
+  { key: 'GOD',    range: '1 — 1000', desc: 'Are you serious?', god: true  },
 ]
 
 export default function Dashboard() {
   const navigate = useNavigate()
-  const [stats, setStats]           = useState(null)
-  const [selected, setSelected]     = useState(null)
+  const [stats, setStats]       = useState(null)
+  const [selected, setSelected] = useState(null)
   const username = authService.getUsername()
 
   useEffect(() => {
+    // FIX: removed the broken ?token= URL handler that was here —
+    // token is now an HttpOnly cookie, it never appears in the URL.
+    // Just load stats on mount.
     gameService.getStats().then(setStats)
   }, [])
 
@@ -37,8 +40,6 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard-page">
-
-      {/* ── Navbar ── */}
       <nav className="nav-bar">
         <span className="text-heading">CiPhErGuEsS</span>
         <div className="nav-right">
@@ -48,15 +49,12 @@ export default function Dashboard() {
       </nav>
 
       <main className="dashboard-main">
-
-        {/* Welcome */}
         <div className="welcome-section">
           <p className="welcome-label">WELCOME BACK</p>
           <h1 className="welcome-name">{username?.toUpperCase()}</h1>
           <p className="welcome-sub">Ready to crack some numbers?</p>
         </div>
 
-        {/* Stats */}
         <div className="stats-grid">
           <div className="stat-card">
             <span className="stat-icon">🎮</span>
@@ -85,13 +83,14 @@ export default function Dashboard() {
               <p className="stat-label">Win Rate</p>
             </div>
             <div className="win-rate-bar">
-              <div className="win-rate-fill"
-                style={{ width: stats ? stats.winRate + '%' : '0%' }} />
+              <div
+                className="win-rate-fill"
+                style={{ width: stats ? stats.winRate + '%' : '0%' }}
+              />
             </div>
           </div>
         </div>
 
-        {/* Difficulty Select */}
         <div className="game-select-section">
           <p className="section-label">SELECT DIFFICULTY</p>
           <div className="difficulty-grid">
@@ -115,7 +114,6 @@ export default function Dashboard() {
             CRACK IT
           </button>
         </div>
-
       </main>
     </div>
   )

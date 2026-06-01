@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="afca3c69-5eaa-4c62-979c-9d5b9efc8309" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/cipher-guess-backend/src/main/java/com/bhargav/crack_the_number/config/AsyncConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cipher-guess-backend/src/main/java/com/bhargav/crack_the_number/service/EmailService.java" beforeDir="false" afterPath="$PROJECT_DIR$/cipher-guess-backend/src/main/java/com/bhargav/crack_the_number/service/EmailService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cipher-guess-backend/.env" beforeDir="false" afterPath="$PROJECT_DIR$/cipher-guess-backend/.env" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cipher-guess-backend/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/cipher-guess-backend/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cipher-guess-backend/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/cipher-guess-backend/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,13 +16,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="36" />
+    <option name="cachedIndexableFilesCount" value="51" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
         <option value="Class" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -36,10 +38,13 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/BHARGAV-RUE/Crack-The-Number.git&quot;,
+    &quot;url&quot;: &quot;https://github.com/BHARGAV-RUE/cipher-guess.git&quot;,
     &quot;accountId&quot;: &quot;17188cb3-9317-45f3-af2e-8ea0ab9a8c63&quot;
   }
 }</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-config/6.5.9/spring-security-config-6.5.9.jar!/org/springframework/security/config/annotation/web/configurers/CsrfConfigurer.class" root0="SKIP_INSPECTION" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -62,22 +67,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.CrackTheNumberApplication.executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.editor",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.CrackTheNumberApplication.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AsyncConfigTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.AuthControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.GameControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.editor&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\keert\OneDrive\Desktop\My-Projects\crack-the-number\src\main\resources\static\pages" />
@@ -85,6 +93,9 @@
   </component>
   <component name="RunManager" selected="Application.CrackTheNumberApplication">
     <configuration name="CrackTheNumberApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="envFilePaths">
+        <option value="$PROJECT_DIR$/../../cloudbridge/Backend/.env" />
+      </option>
       <option name="MAIN_CLASS_NAME" value="com.bhargav.crack_the_number.CrackTheNumberApplication" />
       <module name="crack-the-number" />
       <extension name="coverage">
@@ -97,14 +108,50 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
+    <configuration name="AsyncConfigTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="crack-the-number" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bhargav.crack_the_number.config.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bhargav.crack_the_number.config" />
+      <option name="MAIN_CLASS_NAME" value="com.bhargav.crack_the_number.config.AsyncConfigTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2" />
+    <configuration name="AuthControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="crack-the-number" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bhargav.crack_the_number.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bhargav.crack_the_number.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bhargav.crack_the_number.controller.AuthControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GameControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="crack-the-number" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.bhargav.crack_the_number.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.bhargav.crack_the_number.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.bhargav.crack_the_number.controller.GameControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
     </configuration>
     <configuration name="CrackTheNumberApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
       <module name="crack-the-number" />
@@ -113,16 +160,26 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.CrackTheNumberApplication" />
+      <item itemvalue="JUnit.AsyncConfigTest" />
+      <item itemvalue="JUnit.AuthControllerTest" />
+      <item itemvalue="JUnit.GameControllerTest" />
+      <item itemvalue="Spring Boot.CrackTheNumberApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.CrackTheNumberApplication" />
+        <item itemvalue="JUnit.AsyncConfigTest" />
+        <item itemvalue="JUnit.GameControllerTest" />
+        <item itemvalue="JUnit.AuthControllerTest" />
       </list>
     </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.33514.17" />
       </set>
     </attachedChunks>
   </component>
@@ -144,8 +201,31 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName=".env" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/6.5.9/spring-security-web-6.5.9.jar!/org/springframework/security/web/authentication/AuthenticationSuccessHandler.class</url>
+          <line>20</line>
+          <properties class="org.springframework.security.web.authentication.AuthenticationSuccessHandler" method="onAuthenticationSuccess">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/cipher_guess$CrackTheNumberApplication.ic" NAME="CrackTheNumberApplication Coverage Results" MODIFIED="1779986292948" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.bhargav.crack_the_number.*</FILTER>
+    </SUITE>
   </component>
 </project>
