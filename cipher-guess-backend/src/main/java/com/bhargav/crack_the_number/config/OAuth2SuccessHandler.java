@@ -28,7 +28,7 @@ public class OAuth2SuccessHandler implements AuthenticationSuccessHandler {
     @Autowired
     private AuthTokenRepository authTokenRepository;
 
-    @Value("${app.frontend.url}")
+    @Value("${app.frontend.prod}")
     private String frontendUrl;
 
     @Override
