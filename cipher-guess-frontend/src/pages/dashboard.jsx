@@ -15,12 +15,20 @@ export default function Dashboard() {
   const navigate = useNavigate()
   const [stats, setStats]       = useState(null)
   const [selected, setSelected] = useState(null)
-  const username = authService.getUsername()
+  const [username, setUsername] = useState(authService.getUsername())
 
   useEffect(() => {
-    // FIX: removed the broken ?token= URL handler that was here —
-    // token is now an HttpOnly cookie, it never appears in the URL.
-    // Just load stats on mount.
+    // OAuth2 login lands here with ?username= in the URL
+    const params = new URLSearchParams(window.location.search)
+    const oauthUsername = params.get('username')
+
+    if (oauthUsername) {
+      const decoded = decodeURIComponent(oauthUsername)
+      localStorage.setItem('username', decoded)
+      setUsername(decoded)
+      window.history.replaceState({}, '', '/dashboard') // clean the URL
+    }
+
     gameService.getStats().then(setStats)
   }, [])
 
